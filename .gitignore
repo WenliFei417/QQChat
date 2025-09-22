@@ -1,0 +1,14 @@
+# Ignore build output directories
+/out/
+/QQClient/out/
+/QQServer/out/
+
+# Ignore compiled Java class files
+*.class
+
+# Ignore IntelliJ IDEA project files
+*.iml
+.idea/
+
+# Ignore macOS system files
+.DS_Store
