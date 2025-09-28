@@ -1,67 +1,67 @@
 # QQChat (Java Socket Chat Project)
 
-本项目是一个基于 **Java Socket** 的简易即时通讯系统，模仿 QQ 的基本功能，包含 **客户端 (QQClient)** 和 **服务端 (QQServer)** 两个部分。  
-通过多线程和 I/O 流实现用户登录、私聊、群聊、消息收发及文件传输。
+This project is a simple instant messaging system built on **Java Socket**, imitating the basic functions of QQ. It consists of two parts: **Client (QQClient)** and **Server (QQServer)**.  
+It uses multithreading and I/O streams to implement user login, private chat, group chat, message sending/receiving, and file transfer.
 
 ---
 
-## 🚀 功能特性
+## 🚀 Features
 
-- **用户登录 / 注销**
-  - 客户端输入账号密码，向服务端验证
-  - 服务端校验后允许用户上线
+- **User login / logout**
+  - The client enters an account and password for server validation
+  - The server verifies the credentials and allows the user to log in
 
-- **单人聊天**
-  - 一个用户可以向另一个用户发送消息
-  - 消息通过服务端转发
+- **Private chat**
+  - One user can send messages to another user
+  - Messages are forwarded by the server
 
-- **群聊功能**
-  - 向所有在线用户广播消息
+- **Group chat**
+  - Broadcast messages to all online users
 
-- **查看在线用户**
-  - 客户端可以请求获取当前在线用户列表
+- **View online users**
+  - The client can request the current list of online users
 
-- **文件传输**
-  - 支持客户端之间通过服务端中转文件
+- **File transfer**
+  - Supports file transfer between clients via the server relay
 
 ---
 
-## 📂 项目结构
+## 📂 Project Structure
 
 ```
 QQChat/
-│── QQClient/                # 客户端模块
+│── QQClient/                # Client module
 │   ├── src/com/qqclient/
-│   │   ├── service/         # 客户端业务逻辑（连接、消息、文件等）
-│   │   ├── utils/           # 工具类
-│   │   ├── view/            # 客户端界面交互（命令行界面）
-│   │   └── qqcommon/        # 公共类（Message, User）
+│   │   ├── service/         # Client business logic (connection, messaging, file transfer, etc.)
+│   │   ├── utils/           # Utility classes
+│   │   ├── view/            # Client UI interaction (command-line interface)
+│   │   └── qqcommon/        # Shared classes (Message, User)
 │
-│── QQServer/                # 服务端模块
+│── QQServer/                # Server module
 │   ├── src/com/qqserver/
-│   │   ├── service/         # 服务端业务逻辑（线程管理、消息转发）
-│   │   └── qqcommon/        # 公共类（与客户端共享）
+│   │   ├── service/         # Server business logic (thread management, message forwarding)
+│   │   └── qqcommon/        # Shared classes (used by clients and server)
 │
-│── out/                     # 编译后的 class 文件（可忽略）
+│── out/                     # Compiled class files (can be ignored)
 │── .gitignore
 │── README.md
 ```
 
 ---
 
-## ⚙️ 技术栈
+## ⚙️ Tech Stack
 
-- **Java SE**
-- **Socket / ServerSocket**（网络通信）
-- **多线程**（支持多用户并发）
-- **序列化**（对象传输）
+- Java SE
+- Socket / ServerSocket (network communication)
+- Multithreading (supports concurrent users)
+- Serialization (object transfer)
 
 ---
 
-## 🖥️ 运行方法
+## 🖥️ How to Run
 
-### 1. 启动服务端
-进入 `QQServer` 模块，运行主类（比如 `QQServerMain` 或包含 `main()` 的服务端入口类）：
+### 1. Start the server
+Go to the `QQServer` module and run the main server class (e.g., `QQServerMain` or the class containing `main()`):
 
 ```bash
 cd QQServer/src
@@ -69,10 +69,10 @@ javac com/qqserver/**/*.java
 java com.qqserver.service.QQServer
 ```
 
-服务端会启动并监听指定端口，等待客户端连接。
+The server will start, listen on the configured port, and wait for client connections.
 
-### 2. 启动客户端
-进入 `QQClient` 模块，运行客户端主类（比如 `QQView`）：
+### 2. Start the client
+Go to the `QQClient` module and run the main client class (e.g., `QQView`):
 
 ```bash
 cd QQClient/src
@@ -80,32 +80,32 @@ javac com/qqclient/**/*.java
 java com.qqclient.view.QQView
 ```
 
-然后在命令行输入账号、密码，进入客户端界面。
+Then enter your account and password in the command line to access the client UI.
 
-### 3. 功能演示
-- 输入 `1` → 登录并进入二级菜单  
-- 输入 `2` → 请求在线用户列表  
-- 输入 `3` → 私聊（指定用户 ID）  
-- 输入 `4` → 群发消息  
-- 输入 `5` → 发送文件  
-- 输入 `9` → 退出登录  
-
----
-
-## 📌 注意事项
-
-- 运行前请先启动 **QQServer**，再启动 **QQClient**。  
-- `out/` 文件夹是 IDEA 自动生成的编译结果，可以忽略。  
-- 账号密码在服务端中定义（比如 `HashMap` 中写死），需要自行修改。
+### 3. Demo commands
+- Enter `1` → Login and go to the secondary menu
+- Enter `2` → Request the list of online users
+- Enter `3` → Private chat (specify user ID)
+- Enter `4` → Send group message
+- Enter `5` → Send file
+- Enter `9` → Logout
 
 ---
 
-## 🏗️ 后续改进
+## 📌 Notes
 
-- 使用数据库保存用户信息（替代硬编码）  
-- 使用 GUI 界面代替命令行交互  
-- 支持更多消息类型（图片、语音等）  
-- 优化异常处理与日志管理  
+- Start the **QQServer** before starting the **QQClient**.
+- The `out/` folder contains IDE-generated compiled files and can be ignored.
+- User accounts and passwords are defined on the server (e.g., hard-coded in a `HashMap`) and should be updated as needed.
+
+---
+
+## 🏗️ Future Improvements
+
+- Use a database to store user information (instead of hard-coded credentials)
+- Replace the command-line UI with a graphical interface
+- Support more message types (images, voice, etc.)
+- Enhance error handling and logging
 
 ---
 
