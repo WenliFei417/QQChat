@@ -26,7 +26,8 @@ public class UserClientService {
         u.setPasswd(pwd);
         //连接到服务端，发送u对象
         try {
-            socket = new Socket(InetAddress.getByName("192.168.1.138"), 9999);  //服务器的9999端口
+            //socket = new Socket(InetAddress.getByName("192.168.1.138"), 9999);  //服务器的9999端口
+            socket = new Socket(InetAddress.getByName("127.0.0.1"), 9999);
             //得到ObjectOutputStream对象
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             //发送User对象u
